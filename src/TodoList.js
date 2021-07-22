@@ -1,9 +1,11 @@
 import React from 'react'
+import Todos from './Todos'
 
 export default function TodoList({ todos }) {
+
     return (
-        <div >
-            {todos.length}
-        </div>
+        todos.map(todo => {
+            return <Todos id={todo} todo={todo} />
+        })
     )
 }

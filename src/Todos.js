@@ -1,7 +1,13 @@
 import React from 'react'
 
-export default function Todos() {
+export default function Todos({ todo }) {
     return (
-        null
+        <div>
+            <label>
+                <input type="checkbox" checked={todo.complite} />
+                {todo.name}
+            </label>
+
+        </div>
     )
 }
