@@ -1,0 +1,16 @@
+.kvadratas {
+  height: 100px;
+  width: 150px;
+  display: flex;
+  margin: 30px;
+  align-items: center;
+  justify-content: center;
+  background-color: pink;
+  padding: 20px;
+  span {
+    font-size: 30px;
+  }
+  &.br {
+    background-color: green;
+  }
+}
