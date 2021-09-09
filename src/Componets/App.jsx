@@ -1,16 +1,15 @@
 import React from 'react'
-import Kvadratas from './Kvadratas'
+import Mygtukas from './Mygtukas';
 
-const data = ['Rudasis', 'Juodasis', 'Brigadir'];
+const data = ['Sausk', 'Spaudinek', 'Click'];
 
 function App() {
 
     return (
-        <div>
-            {data.map((b, i) => <Kvadratas bebras={b} key={i}/>
+        <>
+            {data.map((b, i) => <Mygtukas text={b} key={i}/>
             )}
-           
-        </div>
+        </>
     )
 }
 

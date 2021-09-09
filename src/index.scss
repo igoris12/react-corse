@@ -1,16 +1,23 @@
-.kvadratas {
-  height: 100px;
-  width: 150px;
+body {
   display: flex;
-  margin: 30px;
-  align-items: center;
   justify-content: center;
-  background-color: pink;
-  padding: 20px;
-  span {
-    font-size: 30px;
-  }
-  &.br {
-    background-color: green;
-  }
+  align-items: center;
+  height: 100vh;
+}
+
+.but {
+  margin: 60px;
+  background-color: yellow;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.but:hover {
+  background-color: red;
+}
+
+#root {
+  padding: 50px;
 }
