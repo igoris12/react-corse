@@ -6,32 +6,28 @@ body {
 }
 
 .but {
-  width: 150px;
-  height: 150px;
-  margin: 60px;
+  margin: 30px;
+  background-color: orange;
   border: 1px solid black;
-  border-radius: 85px;
+  border-radius: 3px;
   padding: 10px;
-  text-decoration: none;
+}
+
+.animal {
+  margin: 10px;
+  background-color: olive;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  button {
-    margin: 60px;
-    background-color: yellow;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
+  span {
+    font-size: 25px;
+    font-weight: bold;
   }
 }
 
-.green {
-  background-color: green;
-}
-
-.red {
-  background-color: red;
-}
 #root {
   padding: 50px;
 }
