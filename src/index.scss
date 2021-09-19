@@ -14,17 +14,28 @@ body {
 }
 
 .animal {
-  margin: 10px;
+  margin: 30px;
   background-color: olive;
   width: 200px;
   height: 200px;
   border-radius: 50%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
   span {
     font-size: 25px;
     font-weight: bold;
+  }
+  .insideForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .but {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
