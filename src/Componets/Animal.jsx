@@ -21,6 +21,7 @@ export class Animal extends Component {
         style={{
           backgroundColor: this.props.color,
           borderRadius: this.props.animal == 'cow' ? '50%' : '5px',
+          float: this.props.type == 'right' ? 'right' : 'left',
         }}
       >
         <div>

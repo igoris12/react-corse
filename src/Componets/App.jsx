@@ -17,8 +17,20 @@ class App extends React.Component {
     });
   };
 
+  getType = () => {
+    if (Math.random() < 0.5) {
+      return 'right';
+    }
+    return 'left';
+  };
+
   addAnimal = (a) => {
-    const animal = { id: getId(), color: this.state.input, animal: a };
+    const animal = {
+      type: this.getType(),
+      id: getId(),
+      color: this.state.input,
+      animal: a,
+    };
     const animals = this.state.animals.slice();
     animals.push(animal);
     this.setState({
@@ -69,16 +81,6 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {this.state.animals.map((a) => (
-          <Animal
-            id={a.id}
-            key={a.id}
-            color={a.color}
-            animal={a.animal}
-            delete={this.deleteAnimal}
-            editColor={this.editAnimal}
-          />
-        ))}
         <input
           type="text"
           value={this.state.input}
@@ -90,6 +92,19 @@ class App extends React.Component {
         <button className="but" onClick={() => this.addAnimal('sheep')}>
           Sheep
         </button>
+        <div className="animalContaoner">
+          {this.state.animals.map((a) => (
+            <Animal
+              id={a.id}
+              key={a.id}
+              color={a.color}
+              animal={a.animal}
+              type={a.type}
+              delete={this.deleteAnimal}
+              editColor={this.editAnimal}
+            />
+          ))}
+        </div>
       </>
     );
   }
