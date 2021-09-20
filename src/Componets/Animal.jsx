@@ -21,7 +21,7 @@ export class Animal extends Component {
         style={{
           backgroundColor: this.props.color,
           borderRadius: this.props.animal == 'cow' ? '50%' : '5px',
-          float: this.props.type == 'right' ? 'right' : 'left',
+          color: this.props.type == 'right' ? 'wheat' : 'mediumspringgreen',
         }}
       >
         <div>
@@ -47,6 +47,12 @@ export class Animal extends Component {
             onClick={() => this.props.delete(this.props.id)}
           >
             Delete
+          </button>
+          <button
+            className="but"
+            onClick={() => this.props.changeType(this.props.id)}
+          >
+            change type
           </button>
         </div>
       </div>

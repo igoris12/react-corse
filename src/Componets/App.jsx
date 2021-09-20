@@ -68,6 +68,24 @@ class App extends React.Component {
     localStorage.setItem('allAnimals', JSON.stringify(animals));
   };
 
+  editType = (id) => {
+    const animals = this.state.animals.slice();
+    for (let i = 0; i < animals.length; i++) {
+      if (animals[i].id == id) {
+        if (animals[i].type == 'right') {
+          animals[i].type = 'left';
+          break;
+        }
+        animals[i].type = 'right';
+        break;
+      }
+    }
+    this.setState({
+      animals: animals,
+    });
+    localStorage.setItem('allAnimals', JSON.stringify(animals));
+  };
+
   componentDidMount() {
     const animals = JSON.parse(localStorage.getItem('allAnimals'));
     if (null == animals) {
@@ -102,6 +120,7 @@ class App extends React.Component {
               type={a.type}
               delete={this.deleteAnimal}
               editColor={this.editAnimal}
+              changeType={this.editType}
             />
           ))}
         </div>
