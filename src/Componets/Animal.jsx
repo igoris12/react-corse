@@ -7,6 +7,13 @@ export class Animal extends Component {
       editInput: '',
     };
   }
+
+  editInputHandler = (e) => {
+    this.setState({
+      editInput: e.target.value,
+    });
+  };
+
   render() {
     return (
       <div
@@ -20,9 +27,26 @@ export class Animal extends Component {
           <span>{this.props.color}</span>
         </div>
         <div className="insideForm">
-          <input type="text" />
-          <button className="but">Edit</button>
-          <button className="but">Delete</button>
+          <input
+            type="text"
+            value={this.state.editInput}
+            onChange={this.editInputHandler}
+          />
+          <button
+            className="but"
+            onClick={() =>
+              this.props.editColor(this.props.id, this.state.editInput)
+            }
+          >
+            Edit
+          </button>
+
+          <button
+            className="but"
+            onClick={() => this.props.delete(this.props.id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     );

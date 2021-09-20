@@ -11,6 +11,12 @@ class App extends React.Component {
     };
   }
 
+  inputHandler = (e) => {
+    this.setState({
+      input: e.target.value,
+    });
+  };
+
   addAnimal = (a) => {
     const animal = { id: getId(), color: this.state.input, animal: a };
     const animals = this.state.animals.slice();
@@ -21,10 +27,33 @@ class App extends React.Component {
     localStorage.setItem('allAnimals', JSON.stringify(animals));
   };
 
-  inputHandler = (e) => {
+  deleteAnimal = (id) => {
+    const animals = this.state.animals.slice();
+
+    for (let i = 0; i < animals.length; i++) {
+      if (animals[i].id == id) {
+        animals.splice(i, 1);
+        break;
+      }
+    }
     this.setState({
-      input: e.target.value,
+      animals: animals,
     });
+    localStorage.setItem('allAnimals', JSON.stringify(animals));
+  };
+
+  editAnimal = (id, color) => {
+    const animals = this.state.animals.slice();
+    for (let i = 0; i < animals.length; i++) {
+      if (animals[i].id == id) {
+        animals[i].color = color;
+        break;
+      }
+    }
+    this.setState({
+      animals: animals,
+    });
+    localStorage.setItem('allAnimals', JSON.stringify(animals));
   };
 
   componentDidMount() {
@@ -41,7 +70,14 @@ class App extends React.Component {
     return (
       <>
         {this.state.animals.map((a) => (
-          <Animal key={a.id} color={a.color} animal={a.animal} />
+          <Animal
+            id={a.id}
+            key={a.id}
+            color={a.color}
+            animal={a.animal}
+            delete={this.deleteAnimal}
+            editColor={this.editAnimal}
+          />
         ))}
         <input
           type="text"
