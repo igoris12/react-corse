@@ -1,6 +1,6 @@
 import React from 'react';
 import AnimalF from './AnimalF';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import getId from '../Shared/getId';
 
 function App() {
@@ -11,16 +11,9 @@ function App() {
     setInput(e.target.value);
   };
 
-  const getType = () => {
-    if (Math.random() < 0.5) {
-      return 'right';
-    }
-    return 'left';
-  };
-
   const addAnimal = (a) => {
     const animal = {
-      type: getType(),
+      farm1: true,
       id: getId(),
       color: input,
       animal: a,
@@ -28,7 +21,7 @@ function App() {
     const animalsCopy = animals.slice();
     animalsCopy.push(animal);
     setAnimals(animalsCopy);
-    // localStorage.setItem('allAnimals', JSON.stringify(animals));
+    localStorage.setItem('allAnimals', JSON.stringify(animalsCopy));
   };
 
   const deleteAnimal = (id) => {
@@ -41,7 +34,7 @@ function App() {
       }
     }
     setAnimals(animalsCopy);
-    // localStorage.setItem('allAnimals', JSON.stringify(animals));
+    localStorage.setItem('allAnimals', JSON.stringify(animalsCopy));
   };
 
   const editAnimal = (id, color) => {
@@ -53,34 +46,28 @@ function App() {
       }
     }
     setAnimals(animalsCopy);
-    // localStorage.setItem('allAnimals', JSON.stringify(animals));
+    localStorage.setItem('allAnimals', JSON.stringify(animalsCopy));
   };
 
   const editType = (id) => {
     const animalsCopy = animals.slice();
     for (let i = 0; i < animalsCopy.length; i++) {
       if (animalsCopy[i].id == id) {
-        if (animalsCopy[i].type == 'right') {
-          animalsCopy[i].type = 'left';
-          break;
-        }
-        animalsCopy[i].type = 'right';
+        animalsCopy[i].farm1 = !animalsCopy[i].farm1;
         break;
       }
     }
     setAnimals(animalsCopy);
-    // localStorage.setItem('allAnimals', JSON.stringify(animals));
+    localStorage.setItem('allAnimals', JSON.stringify(animalsCopy));
   };
 
-  //  componentDidMount() {
-  //   const animals = JSON.parse(localStorage.getItem('allAnimals'));
-  //   if (null == animals) {
-  //     return;
-  //   }
-  //   this.setState({
-  //     animals: animals,
-  //   });
-  // }
+  useEffect(() => {
+    const animalsCopy = JSON.parse(localStorage.getItem('allAnimals'));
+    if (null == animalsCopy) {
+      return;
+    }
+    setAnimals(animalsCopy);
+  }, []);
 
   return (
     <>
@@ -91,19 +78,40 @@ function App() {
       <button className="but" onClick={() => addAnimal('sheep')}>
         Sheep
       </button>
-      <div className="animalContaoner">
-        {animals.map((a) => (
-          <AnimalF
-            id={a.id}
-            key={a.id}
-            color={a.color}
-            animal={a.animal}
-            type={a.type}
-            delete={deleteAnimal}
-            editColor={editAnimal}
-            changeType={editType}
-          />
-        ))}
+      <div className="feald">
+        <div className="animalContaoner">
+          <h1>Farm Nr. 1</h1>
+
+          {animals.map((a) => (
+            <AnimalF
+              id={a.id}
+              key={a.id}
+              color={a.color}
+              animal={a.animal}
+              farm1={a.farm1}
+              farmNumber={1}
+              delete={deleteAnimal}
+              editColor={editAnimal}
+              changeType={editType}
+            />
+          ))}
+        </div>
+        <div className="animalContaoner">
+          <h1>Farm Nr. 2</h1>
+          {animals.map((a) => (
+            <AnimalF
+              id={a.id}
+              key={a.id}
+              color={a.color}
+              animal={a.animal}
+              farm1={a.farm1}
+              farmNumber={2}
+              delete={deleteAnimal}
+              editColor={editAnimal}
+              changeType={editType}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

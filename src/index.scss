@@ -41,14 +41,16 @@ body {
 #root {
   padding: 50px;
 }
-
-.smallAnimal {
-  background-color: red;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.feald {
   display: flex;
+}
+
+.animalContaoner {
   align-items: center;
   justify-content: center;
+  display: flex;
   flex-direction: column;
+  margin: 9px;
+  padding: 8px;
+  border: 3px dotted green;
 }
