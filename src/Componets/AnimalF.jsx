@@ -17,7 +17,6 @@ function AnimalF(props) {
         style={{
           backgroundColor: props.color,
           borderRadius: props.animal == 'cow' ? '50%' : '5px',
-          color: props.type == 'right' ? 'wheat' : 'mediumspringgreen',
         }}
       >
         <div>
