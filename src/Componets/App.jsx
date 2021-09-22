@@ -1,35 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Todo from './Todo';
+import Book from './Book';
 
 export const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [books, setTodos] = useState([]);
   useEffect(() => {
     console.log('Start');
-    axios
-      .get('https://jsonplaceholder.typicode.com/todos')
-      .then(function (response) {
-        console.log(response.data);
-        setTodos(response.data);
-      });
+    axios.get('https://in3.dev/knygos/').then(function (response) {
+      console.log(response.data);
+      setTodos(response.data);
+    });
   }, []);
 
-  const sniuriukas = (id) => {
-    let todosCopy = todos;
-    for (let i = 0; i < todosCopy.length; i++) {
-      if (todosCopy[i].id === id) {
-        todosCopy[i].completed = !todosCopy[i].completed;
-        console.log(todosCopy[i].completed);
+  const buy = (id) => {
+    let booksCopy = books.slice();
+    for (let i = 0; i < booksCopy.length; i++) {
+      if (booksCopy[i].id === id) {
+        booksCopy.splice(i, 1);
+
         break;
       }
     }
-    setTodos(todosCopy);
+    console.log(booksCopy);
+    setTodos(booksCopy);
   };
 
   return (
-    <div className="todo-container">
-      {todos.map((todo) => (
-        <Todo key={todo.id} data={todo} sniuriukas={sniuriukas}></Todo>
+    <div className="books-container">
+      {books.map((books) => (
+        <Book key={books.id} data={books} buy={buy}></Book>
       ))}
     </div>
   );
