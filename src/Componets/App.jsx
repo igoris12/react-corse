@@ -1,17 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Todo from './Todo';
 
 export const App = () => {
+  const [todos, setTodos] = useState([]);
   useEffect(() => {
-    console.log('start');
+    console.log('Start');
     axios
-      .get('https://jsonplaceholder.typicode.com/users')
+      .get('https://jsonplaceholder.typicode.com/todos')
       .then(function (response) {
         console.log(response.data);
+        setTodos(response.data);
       });
   }, []);
 
-  return <div>HEllo</div>;
+  const sniuriukas = (id) => {
+    let todosCopy = todos;
+    for (let i = 0; i < todosCopy.length; i++) {
+      if (todosCopy[i].id === id) {
+        todosCopy[i].completed = !todosCopy[i].completed;
+        console.log(todosCopy[i].completed);
+        break;
+      }
+    }
+    setTodos(todosCopy);
+  };
+
+  return (
+    <div className="todo-container">
+      {todos.map((todo) => (
+        <Todo key={todo.id} data={todo} sniuriukas={sniuriukas}></Todo>
+      ))}
+    </div>
+  );
 };
 
 export default App;
