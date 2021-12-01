@@ -1,9 +1,7 @@
 import React from 'react';
 import UseContex from './reactHooks/UseContex';
-import { createContext } from 'react';
+import { Context, workContext } from '../Data/context.jsx';
 
-export const Context = createContext('Default Value');
-export const workContext = createContext('Default Value');
 const App = () => {
   const userInfo = { name: 'Josh', age: 39 };
   const workInfo = { titel: 'Developer', employed: false };

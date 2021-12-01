@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { workContext } from '../App';
+import { workContext } from '../../Data/context.jsx';
 
 function UseContextChild() {
   const info = useContext(workContext);
