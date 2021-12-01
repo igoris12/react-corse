@@ -1,36 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Book from './Book';
+import React from 'react';
+import UseContex from './reactHooks/UseContex';
+import { Context, workContext } from '../Data/context.jsx';
 
-export const App = () => {
-  const [books, setTodos] = useState([]);
-  useEffect(() => {
-    console.log('Start');
-    axios.get('https://in3.dev/knygos/').then(function (response) {
-      console.log(response.data);
-      setTodos(response.data);
-    });
-  }, []);
-
-  const buy = (id) => {
-    let booksCopy = books.slice();
-    for (let i = 0; i < booksCopy.length; i++) {
-      if (booksCopy[i].id === id) {
-        booksCopy.splice(i, 1);
-
-        break;
-      }
-    }
-    console.log(booksCopy);
-    setTodos(booksCopy);
-  };
-
+const App = () => {
+  const userInfo = { name: 'Josh', age: 39 };
+  const workInfo = { titel: 'Developer', employed: false };
   return (
-    <div className="books-container">
-      {books.map((books) => (
-        <Book key={books.id} data={books} buy={buy}></Book>
-      ))}
-    </div>
+    <workContext.Provider value={workInfo}>
+      <Context.Provider value={userInfo}>
+        <UseContex />
+      </Context.Provider>
+    </workContext.Provider>
   );
 };
 
