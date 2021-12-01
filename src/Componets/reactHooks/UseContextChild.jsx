@@ -5,8 +5,10 @@ function UseContextChild() {
   const info = useContext(workContext);
   return (
     <div>
-      He is {info.titel} and now{' '}
-      {info.employed ? 'is working.' : 'looking new work place.'}
+      {typeof info == 'object'
+        ? `He is ${info.titel} and now 
+      ${info.employed ? 'is working.' : 'looking new work place.'}`
+        : info}
     </div>
   );
 }
