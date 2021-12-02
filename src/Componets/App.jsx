@@ -1,7 +1,12 @@
 import React from 'react';
+import UseReduserCom from './reactHooks/UseReducer/UseReduserCom';
 
 function App() {
-  return <div>good</div>;
+  return (
+    <div>
+      <UseReduserCom />
+    </div>
+  );
 }
 
 export default App;
