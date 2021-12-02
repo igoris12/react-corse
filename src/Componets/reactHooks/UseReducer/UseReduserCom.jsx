@@ -1,23 +1,24 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import { useReducer } from 'react';
 
-const initialState = 0;
 const reducer = (state, action) => {
   switch (action) {
     case 'increment':
       return state + 1;
     case 'decrement':
-      return state - 2;
+      return state - 1;
     case 'restart':
       return 0;
     default:
       return state;
   }
 };
+
 function UseReduserCom() {
-  const [count, dispatch] = useReducer(reducer, 5);
+  const [state, dispatch] = useReducer(reducer, 0);
   return (
     <div>
-      <div>Count - {count}</div>
+      <div>Count - {state} </div>
       <button onClick={() => dispatch('increment')}>increment</button>
       <button onClick={() => dispatch('decrement')}>decrement</button>
       <button onClick={() => dispatch('restart')}>restart</button>
