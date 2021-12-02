@@ -6,15 +6,15 @@ const reducer = (state, action) => {
     case 'increment':
       return state + 1;
     case 'decrement':
-      return state - 1;
+      return state - 2;
     case 'restart':
-      return initialState;
+      return 0;
     default:
       return state;
   }
 };
 function UseReduserCom() {
-  const [count, dispatch] = useReducer(reducer, initialState);
+  const [count, dispatch] = useReducer(reducer, 5);
   return (
     <div>
       <div>Count - {count}</div>
