@@ -3,14 +3,19 @@ import { useReducer } from 'react';
 
 const initionState = {
   value: 0,
+  value2: 50,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case 'increment':
-      return { value: state.value + action.value };
+      return { ...state, value: state.value + action.value };
     case 'decrement':
-      return { value: state.value - action.value };
+      return { ...state, value: state.value - action.value };
+    case 'increment2':
+      return { ...state, value2: state.value2 + action.value };
+    case 'decrement2':
+      return { ...state, value2: state.value2 - action.value };
     case 'restart':
       return initionState;
   }
@@ -21,6 +26,8 @@ function UseReduserCom2() {
   return (
     <div>
       <div>Count - {state.value} </div>
+      <div>Count 2 - {state.value2} </div>
+
       <button onClick={() => dispatch({ type: 'increment', value: 1 })}>
         increment
       </button>
@@ -28,6 +35,14 @@ function UseReduserCom2() {
         decrement
       </button>
       <button onClick={() => dispatch({ type: 'restart' })}>restart</button>
+      <div>
+        <button onClick={() => dispatch({ type: 'increment2', value: 1 })}>
+          increment2
+        </button>
+        <button onClick={() => dispatch({ type: 'decrement2', value: 1 })}>
+          decrement2
+        </button>
+      </div>
     </div>
   );
 }
