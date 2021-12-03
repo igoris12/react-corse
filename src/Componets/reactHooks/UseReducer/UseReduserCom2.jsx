@@ -17,7 +17,9 @@ const reducer = (state, action) => {
     case 'decrement2':
       return { ...state, value2: state.value2 - action.value };
     case 'restart':
-      return initionState;
+      return { ...state, value: initionState.value };
+    case 'restart2':
+      return { ...state, value2: initionState.value2 };
   }
 };
 
@@ -42,6 +44,7 @@ function UseReduserCom2() {
         <button onClick={() => dispatch({ type: 'decrement2', value: 1 })}>
           decrement2
         </button>
+        <button onClick={() => dispatch({ type: 'restart2' })}>restart2</button>
       </div>
     </div>
   );
