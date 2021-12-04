@@ -21,7 +21,8 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, 0);
   return (
-    <CountState.Provider>
+    <CountState.Provider value={{ count: state, countDispatch: dispatch }}>
+      Count = {state}
       {/* <UseReduserCom /> */}
       {/* <UseReduserCom2 /> */}
       {/* <UseReduserCom3 /> */}
