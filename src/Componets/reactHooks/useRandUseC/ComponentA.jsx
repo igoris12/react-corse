@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import ComponentB from './ComponentB';
 import { CountState } from '../../../Data/context';
+import ComponentB from './ComponentB';
 
 function ComponentA() {
   const state = useContext(CountState);
