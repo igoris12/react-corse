@@ -17,7 +17,7 @@ const reducer = (state, action) => {
     case 'FETCH_ERROR':
       return {
         loading: false,
-        post: {},
+        post: action.data,
         error: 'Something is not working how it was planned.',
       };
 
@@ -25,12 +25,30 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
 const DateFetching = () => {
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        dispatch({
+          type: 'FETCH_SUCCESS',
+          data: data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: 'FETCH_ERROR',
+          data: {},
+        });
+      });
+  }, []);
+
   const [state, dispatch] = useReducer(reducer, initialValue);
   return (
     <div>
-      {state.loading ? 'Loding...' : state.post.titel}
+      {state.loading ? 'Loding...' : state.post.title}
       {state.error ? state.error : null}
     </div>
   );
