@@ -1,6 +1,6 @@
 export function createStore(reducer, initvalue) {
-    let state = reducer(initvalue, { type: '_INI_' });
-    let subscribers = [];
+    let state = reducer(initvalue, { type: '_INIT_' });
+    const subscribers = [];
 
     return {
         dispatch(action) {

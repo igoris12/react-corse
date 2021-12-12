@@ -3,8 +3,8 @@ import { createStore } from './Redux/createStore';
 import { reducer } from './Redux/reducer';
 
 const state = createStore(reducer, 0);
-console.log(state);
 
+state.subscribe(() => console.log(state.getState()));
 const App = () => {
   return (
     <div className="dark">
@@ -13,7 +13,10 @@ const App = () => {
       <div className="contaner ">
         <h4>count - {state.getState()}</h4>
         <div className="btn-box">
-          <button className="btn-add" onClick={state.dispatch('INCREMENT')}>
+          <button
+            className="btn-add"
+            onClick={() => state.dispatch({ type: 'ADD' })}
+          >
             Increment
           </button>
           <button className="btn-sub">Decrement</button>
