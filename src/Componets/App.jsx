@@ -1,4 +1,9 @@
 import React from 'react';
+import { createStore } from './Redux/createStore';
+import { reducer } from './Redux/reducer';
+
+const state = createStore(reducer, 0);
+console.log(state);
 
 const App = () => {
   return (
@@ -6,9 +11,11 @@ const App = () => {
       <button className="btn-theme">Theme</button>
 
       <div className="contaner ">
-        <h4>count - 0</h4>
+        <h4>count - {state.getState()}</h4>
         <div className="btn-box">
-          <button className="btn-add">Increment</button>
+          <button className="btn-add" onClick={state.dispatch('INCREMENT')}>
+            Increment
+          </button>
           <button className="btn-sub">Decrement</button>
           <button className="btn-async">Async</button>
         </div>
