@@ -1,12 +1,7 @@
 import React from 'react';
-import DataFetching from '../Componets/reactHooks/useReducerFetch/DateFetching';
 
 const App = () => {
-  return (
-    <div>
-      <DataFetching />
-    </div>
-  );
+  return <div>redux shit</div>;
 };
 
 export default App;
