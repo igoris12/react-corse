@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createStore } from './Redux/createStore';
 import { reducer } from './Redux/reducer';
 
-const state = createStore(reducer, 0);
-
-state.subscribe(() => console.log(state.getState()));
 const App = () => {
+  const [state, setState] = useState(createStore(reducer, 0));
+  // const state = createStore(reducer, 0);
+  state.subscribe(() => {
+    const count = state.getState();
+    setState(count);
+  });
   return (
     <div className="dark">
       <button className="btn-theme">Theme</button>
@@ -19,7 +22,12 @@ const App = () => {
           >
             Increment
           </button>
-          <button className="btn-sub">Decrement</button>
+          <button
+            onClick={() => state.dispatch({ type: 'SUB' })}
+            className="btn-sub"
+          >
+            Decrement
+          </button>
           <button className="btn-async">Async</button>
         </div>
       </div>
