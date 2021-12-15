@@ -1,36 +1,45 @@
 import React, { useState } from 'react';
-import { createStore } from './Redux/createStore';
-import { reducer } from './Redux/reducer';
+import Counter1 from './Counter1';
+import Form from './Form';
+import HomePage from './HomePage';
+import LandingPage from './LandingPage';
+import Logo from './Logo';
 
 const App = () => {
-  const [state, setState] = useState(createStore(reducer, 0));
-  // const state = createStore(reducer, 0);
-  state.subscribe(() => {
-    const count = state.getState();
-    setState(count);
-  });
-  return (
-    <div className="dark">
-      <button className="btn-theme">Theme</button>
+  const [registration, setRegistration] = useState(false);
+  const [from, setForm] = useState(false);
+  const [loged, setLoged] = useState(false);
+  const [email, setEmail] = useState('');
 
-      <div className="contaner ">
-        <h4>count - {state.getState()}</h4>
-        <div className="btn-box">
-          <button
-            className="btn-add"
-            onClick={() => state.dispatch({ type: 'ADD' })}
-          >
-            Increment
-          </button>
-          <button
-            onClick={() => state.dispatch({ type: 'SUB' })}
-            className="btn-sub"
-          >
-            Decrement
-          </button>
-          <button className="btn-async">Async</button>
-        </div>
-      </div>
+  const goRegistrate = () => {
+    setRegistration(true);
+    setForm(true);
+  };
+
+  const login = () => {
+    if (email == '') {
+      return;
+    }
+    setLoged(true);
+  };
+  const logout = () => {
+    setLoged(false);
+  };
+
+  const onChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  return (
+    <div>
+      <Logo />
+      {!registration && !loged && (
+        <LandingPage registrationHandler={goRegistrate} />
+      )}
+      {from && !loged && (
+        <Form getUser={login} email={email} onChange={onChange} />
+      )}
+      {loged && <HomePage email={email} logout={logout} />}
     </div>
   );
 };
