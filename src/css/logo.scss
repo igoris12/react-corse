@@ -1,0 +1,18 @@
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  .contaner {
+    padding: 4px;
+    width: 100px;
+    height: 100px;
+    // background-image: url('https://x-squad.com/images/logo.png');
+    // background-position: center;
+    img {
+      z-index: 999;
+      width: 100px;
+    }
+  }
+  //   img {
+  //   }
+}
