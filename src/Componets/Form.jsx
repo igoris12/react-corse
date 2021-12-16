@@ -1,15 +1,21 @@
 import React from 'react';
 
-const Form = ({ getUser, onChange, email }) => {
+const Form = ({ getRegistration }) => {
   return (
-    <div className="from">
-      <form onSubmit={getUser}>
+    <div className="formContainer">
+      <form onSubmit={getRegistration} className="form">
+        <input type="text" name="username" placeholder="Username" required />
         <input
-          onChange={onChange}
-          type="email"
-          name="email"
-          placeholder="Name"
-          value={email}
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <input
+          type="password"
+          name="repPassword"
+          placeholder="Repeat password"
+          required
         />
         <button type="submit">Registrate</button>
       </form>

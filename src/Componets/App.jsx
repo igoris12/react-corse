@@ -9,25 +9,32 @@ const App = () => {
   const [registration, setRegistration] = useState(false);
   const [from, setForm] = useState(false);
   const [loged, setLoged] = useState(false);
-  const [email, setEmail] = useState('');
+  const [user, setUser] = useState({ username: '', password: '' });
 
+  console.log(user);
   const goRegistrate = () => {
     setRegistration(true);
     setForm(true);
   };
 
-  const login = () => {
-    if (email == '') {
-      return;
+  const getRegistration = (e) => {
+    e.preventDefault();
+    // console.log(e.target[0].value);
+    // console.log(e.target[1].value);
+    // console.log(e);
+    if (e.target[2].value === e.target[1].value) {
+      setUser({
+        username: e.target[0].value,
+        password: e.target[1].value,
+      });
+      setLoged(true);
+    } else {
+      alert('Passwors must match!');
     }
-    setLoged(true);
-  };
-  const logout = () => {
-    setLoged(false);
   };
 
-  const onChange = (e) => {
-    setEmail(e.target.value);
+  const logout = () => {
+    setLoged(false);
   };
 
   return (
@@ -36,10 +43,8 @@ const App = () => {
       {!registration && !loged && (
         <LandingPage registrationHandler={goRegistrate} />
       )}
-      {from && !loged && (
-        <Form getUser={login} email={email} onChange={onChange} />
-      )}
-      {loged && <HomePage email={email} logout={logout} />}
+      {from && !loged && <Form getRegistration={getRegistration} />}
+      {loged && <HomePage logout={logout} />}
     </div>
   );
 };
