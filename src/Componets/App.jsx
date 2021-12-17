@@ -7,12 +7,18 @@ import Logo from './Logo';
 const App = () => {
   const [registration, setRegistration] = useState(false);
   const [from, setForm] = useState(false);
+  const [loged, setLoged] = useState(false);
+
   const [user, setUser] = useState({
     username: '',
     password: '',
     email: '',
-    loged: false,
   });
+
+  useEffect(() => {
+    const dataCopy = localStorage.getItem('userInfo');
+    dataCopy !== null && setLoged(true);
+  }, []);
 
   const goRegistrate = () => {
     setRegistration(true);
@@ -30,6 +36,7 @@ const App = () => {
 
     if (response.ok) {
       localStorage.setItem('userInfo', JSON.stringify(data));
+      setLoged(true);
     }
     return await response.json();
   };
@@ -42,12 +49,12 @@ const App = () => {
         username: e.target[0].value,
         email: e.target[1].value,
         password: e.target[2].value,
-        loged: true,
       };
 
       sendData('http://jsonplaceholder.typicode.com/users', data).then(
         (response) => {
           console.log(response);
+          // need get in the home page
         }
       );
     } else {
@@ -56,20 +63,18 @@ const App = () => {
   };
 
   const logout = () => {
-    setUser({
-      ...user,
-      loged: false,
-    });
+    localStorage.removeItem('userInfo');
+    setLoged(false);
   };
 
   return (
     <div>
       <Logo />
-      {!registration && !user.loged && (
+      {!registration && !loged && (
         <LandingPage registrationHandler={goRegistrate} />
       )}
-      {from && !user.loged && <Form getRegistration={getRegistration} />}
-      {user.loged && <HomePage logout={logout} />}
+      {from && !loged && <Form getRegistration={getRegistration} />}
+      {loged && <HomePage logout={logout} />}
     </div>
   );
 };
