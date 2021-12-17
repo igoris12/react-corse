@@ -1,9 +1,10 @@
 import React from 'react';
 
-const HomePage = ({ email, logout }) => {
+const HomePage = ({ content, logout }) => {
   return (
     <div className="homePage">
       <div>
+        {JSON.stringify(content)}
         <button onClick={logout}>Logout</button>
       </div>
     </div>
