@@ -12,21 +12,42 @@ const App = () => {
   const [user, setUser] = useState({
     username: '',
     password: '',
+    email: '',
     loged: false,
   });
 
   console.log(user);
+
   const goRegistrate = () => {
     setRegistration(true);
     setForm(true);
   };
 
+  const sendData = async (url, data) => {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response;
+  };
+
+  sendData('http://jsonplaceholder.typicode.com/users', { A: 3, b: 3 })
+    .then((response) => {
+      console.log(response.status);
+    })
+    .catch((e) => console.log(e));
+
   const getRegistration = (e) => {
     e.preventDefault();
-    if (e.target[2].value === e.target[1].value) {
+    const info = new FormData(e.target);
+    if (info.get('repPassword') === info.get('password')) {
       setUser({
-        username: e.target[0].value,
-        password: e.target[1].value,
+        username: info.get('username'),
+        email: info.get('email'),
+        password: info.get('repPassword'),
         loged: true,
       });
     } else {
