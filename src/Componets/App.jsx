@@ -36,22 +36,16 @@ const App = () => {
 
   const getRegistration = (e) => {
     e.preventDefault();
+    let data = {};
     if (e.target[2].value === e.target[3].value) {
-      setUser({
-        username: e.target[0].value,
-        email: e.target[1].value,
-        password: e.target[2].value,
-        loged: true,
-      });
-
-      const data2 = {
+      data = {
         username: e.target[0].value,
         email: e.target[1].value,
         password: e.target[2].value,
         loged: true,
       };
 
-      sendData('http://jsonplaceholder.typicode.com/users', data2).then(
+      sendData('http://jsonplaceholder.typicode.com/users', data).then(
         (response) => {
           console.log(response);
         }
