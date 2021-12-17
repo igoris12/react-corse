@@ -9,12 +9,9 @@ const App = () => {
   const [from, setForm] = useState(false);
   const [loged, setLoged] = useState(false);
 
-  const [user, setUser] = useState({
-    username: '',
-    password: '',
-    email: '',
-  });
+  const [respond, setRespond] = useState({});
 
+  console.log(respond);
   useEffect(() => {
     const dataCopy = localStorage.getItem('userInfo');
     dataCopy !== null && setLoged(true);
@@ -36,6 +33,7 @@ const App = () => {
 
     if (response.ok) {
       localStorage.setItem('userInfo', JSON.stringify(data));
+
       setLoged(true);
     }
     return await response.json();
@@ -54,7 +52,7 @@ const App = () => {
       sendData('http://jsonplaceholder.typicode.com/users', data).then(
         (response) => {
           console.log(response);
-          // need get in the home page
+          setRespond(response);
         }
       );
     } else {
@@ -74,7 +72,7 @@ const App = () => {
         <LandingPage registrationHandler={goRegistrate} />
       )}
       {from && !loged && <Form getRegistration={getRegistration} />}
-      {loged && <HomePage logout={logout} />}
+      {loged && <HomePage logout={logout} content={respond} />}
     </div>
   );
 };
