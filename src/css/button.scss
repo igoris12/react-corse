@@ -2,9 +2,15 @@
   width: 100%;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
+  border: 1px solid rgb(8, 40, 202);
+  border-radius: 4px;
+  background-color: rgb(102, 172, 243);
   padding: 10px;
+  cursor: pointer;
+}
+
+.but:hover {
+  background-color: rgb(28, 141, 255);
 }
 
 .but-menu {
@@ -15,6 +21,7 @@
   border-top: 1px solid black;
   padding: 10px;
   transition: 500ms;
+  cursor: pointer;
 }
 .but-menu:hover {
   background-color: rgb(66, 154, 231);

@@ -18,7 +18,9 @@ const Form = ({ getRegistration }) => {
           placeholder="Repeat password"
           required
         />
-        <button type="submit">Create my account</button>
+        <button className="but" type="submit">
+          Create my account
+        </button>
       </form>
     </div>
   );
