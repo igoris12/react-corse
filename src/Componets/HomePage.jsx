@@ -10,13 +10,18 @@ const HomePage = ({ content, logout }) => {
   return (
     <div className="homePage">
       <div>
-        <Drawer toggle={show} />
+        <Drawer toggle={show} logout={logout} />
         <span onClick={toggleDrawer} className="drawer-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          {show ? (
+            <div>
+              <span></span> <span></span>
+              <span></span>
+            </div>
+          ) : (
+            <div className="close">X</div>
+          )}
         </span>
-        <div>{JSON.stringify(content)}</div>
+        <div className="content">{JSON.stringify(content)}</div>
       </div>
     </div>
   );

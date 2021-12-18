@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 const LandingPage = ({ registrationHandler }) => {
   return (
     <div className="landingPage">
-      <button onClick={registrationHandler}>Register with my email</button>
+      <button className="but" onClick={registrationHandler}>
+        Register with my email
+      </button>
     </div>
   );
 };
