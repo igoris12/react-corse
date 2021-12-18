@@ -12,9 +12,14 @@ const HomePage = ({ content, logout }) => {
       <div>
         <Drawer toggle={show} logout={logout} />
         <span onClick={toggleDrawer} className="drawer-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          {show ? (
+            <div>
+              <span></span> <span></span>
+              <span></span>
+            </div>
+          ) : (
+            <div className="close">X</div>
+          )}
         </span>
         <div>{JSON.stringify(content)}</div>
       </div>
