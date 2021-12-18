@@ -1,7 +1,14 @@
 import React from 'react';
 
-const Drawer = () => {
-  return <div className="drawer-box">aaa</div>;
+const Drawer = ({ toggle }) => {
+  return (
+    <div
+      style={toggle ? { width: '20%' } : { width: '0' }}
+      className="drawer-box"
+    >
+      {toggle && <button>Logout</button>}
+    </div>
+  );
 };
 
 export default Drawer;
