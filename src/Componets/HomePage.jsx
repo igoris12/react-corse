@@ -21,7 +21,7 @@ const HomePage = ({ content, logout }) => {
             <div className="close">X</div>
           )}
         </span>
-        <div>{JSON.stringify(content)}</div>
+        <div className="content">{JSON.stringify(content)}</div>
       </div>
     </div>
   );
