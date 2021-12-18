@@ -6,7 +6,7 @@ const Drawer = ({ toggle }) => {
       style={toggle ? { width: '20%' } : { width: '0' }}
       className="drawer-box"
     >
-      {toggle && <button>Logout</button>}
+      {toggle && <button className="but-menu">Logout</button>}
     </div>
   );
 };

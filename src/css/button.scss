@@ -1,0 +1,21 @@
+.but {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 10px;
+}
+
+.but-menu {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  padding: 10px;
+  transition: 500ms;
+}
+.but-menu:hover {
+  background-color: rgb(66, 154, 231);
+}
