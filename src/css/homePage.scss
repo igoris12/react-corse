@@ -1,8 +1,39 @@
 .homePage {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    .drawer-toggle {
+      position: absolute;
+
+      top: 30px;
+      left: 10px;
+      border: 2px solid gray;
+      border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      cursor: pointer;
+      span {
+        display: block;
+        width: 40px;
+        height: 4px;
+        margin-bottom: 5px;
+        background-color: gray;
+        margin: 5px;
+      }
+    }
+    .drawer-toggle:hover {
+      border-color: rgb(134, 181, 223);
+      span {
+        background-color: rgb(134, 181, 223);
+      }
+    }
   }
 }

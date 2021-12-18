@@ -11,10 +11,13 @@ const App = () => {
 
   const [respond, setRespond] = useState({});
 
-  console.log(respond);
   useEffect(() => {
     const dataCopy = localStorage.getItem('userInfo');
-    dataCopy !== null && setLoged(true);
+
+    if (dataCopy) {
+      setLoged(true);
+      setRespond(JSON.parse(dataCopy));
+    }
   }, []);
 
   const goRegistrate = () => {
