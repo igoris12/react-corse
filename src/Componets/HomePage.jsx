@@ -10,7 +10,7 @@ const HomePage = ({ content, logout }) => {
   return (
     <div className="homePage">
       <div>
-        <Drawer toggle={show} />
+        <Drawer toggle={show} logout={logout} />
         <span onClick={toggleDrawer} className="drawer-toggle">
           <span></span>
           <span></span>
